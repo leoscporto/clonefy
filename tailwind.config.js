@@ -21,7 +21,7 @@ module.exports = {
         }
       },
       fontFamily: {
-        body: ['Roboto']
+        body: ['-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif']
       },
       screens: {
         'sm': {'max': '767px'}, // applies to screen sizes less than 768px

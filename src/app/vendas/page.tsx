@@ -44,20 +44,20 @@ export default function Vendas() {
         </button>
       </div>
       <div>
-        <div className="border flex items-center rounded-lg py-2 bg-white shadow-sm">
+        <div className="flex items-center rounded-lg py-2 bg-white shadow-sm">
           <div className="ml-6 px-3 py-1 my-3 rounded-l-lg w-full border flex items-center border-gray-300 border-r-0">
             <button>
               <FaSearch className="text-gray-400 " />
             </button>
-            <input className="ml-3 w-full focus:outline-none" />
+            <input className="form-input block w-full rounded-none rounded-l-md pl-10 transition ease-in-out duration-150 sm:text-sm sm:leading-5" />
           </div>
 
-          <button className="border text-gray-800 px-4 mr-2 h-[34px] flex flex-row items-center gap-2 bg-gray-50 border-gray-400 rounded-r-lg text-sm">
+          <button className="border text-gray-800 px-4 mr-2 h-[34px] flex flex-row items-center gap-2 bg-gray-50 border-gray-300 rounded-r-lg text-sm">
             <HiAdjustments className="fill-gray-500" size={19} /> Filtros
           </button>
         </div>
       </div>
-      <div className="flex flex-col xl:flex-row flex-grow-0 w-full gap-2 lg:gap-5">
+      <div className="grid gap-5 grid-cols-2">
         <Card
           header="Vendas encontradas"
           label={parseCommaDecimalNumber2(vendaSummary.vendasEncontradas)}
@@ -83,7 +83,7 @@ interface Props {
 
 const Card: React.FC<Props> = ({ header, label }) => {
   return (
-    <div className="bg-white shadow rounded-md p-4 flex flex-col w-full font-medium text-gray-500">
+    <div className="bg-white shadow rounded-md p-4 flex flex-col w-full font-medium text-gray-700">
       <h1 className="pb-1">{header}</h1>
       <h2 className="text-gray-700 font-medium text-2xl">{label}</h2>
     </div>
