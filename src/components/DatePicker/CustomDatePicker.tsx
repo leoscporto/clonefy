@@ -84,6 +84,7 @@ const CustomDatePicker: React.FC<DateRangePickerProps> = ({
         startDate={startDate}
         endDate={endDate}
         selectsRange
+        maxDate={new Date()}
         openToDate={startDate}
         onSelect={(date, event) => {
           if (date < startDate && endDate === null) {

@@ -12,7 +12,6 @@ import {
   getSimpleDateHash,
   isSameDay,
 } from "@utils/dateProcessing";
-import { hashCode } from "@utils/encryption";
 import { sleep } from "@utils/await";
 
 import PocketBase from "pocketbase";
@@ -71,16 +70,23 @@ export default function Dashboard() {
     let record;
 
     try {
+      const startDate = formatDate2(start, false);
+      const endDate = formatDate2(
+        end ?? start,
+        false
+      );
+
+      console.log(startDate,endDate);
+      
       record = await pb
         .collection("vendasTotaisCloneFy")
         .getFirstListItem(
-          `start="${formatDate2(start, false)}" && end="${formatDate2(
-            end ?? start,
-            false
-          )}"`
+          `start="${startDate}" && end="${endDate}"`
         );
-    } catch (e) {}
-
+    } catch (e) {
+      console.log(e);
+    }
+    
     if (record) {
       numVendas = record.vendas;
     } else {
@@ -110,8 +116,8 @@ export default function Dashboard() {
       numVendas,
       start,
       end
-    );
-
+    );    
+      
     const [total, dailyV] = await calculateDailyValues(
       product,
       randomTransactions,
@@ -179,6 +185,9 @@ export default function Dashboard() {
 
   useEffect(() => {
     dateIntervalChanged(dateInterval);
+  }, [dateInterval[0], dateInterval[1]]);
+
+  useEffect(() => {
     pb.collection("vendasTotaisCloneFy").subscribe("*", function (e) {
       retrieveTransactionsAndDailyValues(
         product,

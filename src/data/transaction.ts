@@ -52,7 +52,6 @@ export function generateTransaction(product_id: number, start: Date, end: Date |
 }
 
 export function generateTransactions(product: string, num_vendas: number, start: Date, end: Date | null) {
-
   let transactions = []
 
   for (let i = 0; i < num_vendas; i++) {
