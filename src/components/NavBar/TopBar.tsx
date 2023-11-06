@@ -2,8 +2,9 @@
 import ProfileButton from "@components/Button/IconButton/ProfileButton";
 import { HiMenuAlt2 } from "react-icons/hi";
 import { faker } from "@faker-js/faker";
-import { useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import Image from "next/image";
+import GlobalProviderContext from "../../Context/GlobalContext";
 
 interface TopBarProps {
   onClick: Function;
@@ -31,10 +32,14 @@ export default function TopBar({ onClick }: TopBarProps) {
 }
 
 function EmeraldMoneyBarFill() {
-  let width = 3;
+  const { productRevenue } = useContext(GlobalProviderContext)
+  const [width, setWidth] = useState(0);
+
   useEffect(() => {
-    width = faker.datatype.number({ min: 2, max: 11 });
-  }, []);
+    console.log(productRevenue.valorLiquido);
+    
+    setWidth(faker.datatype.number({ min: 0, max: 100 }));
+  }, [productRevenue]);
 
   return (
     <button className="flex flex-col justify-center transition-colors duration-150 hover:bg-emerald-600 p-2 rounded">
@@ -44,7 +49,7 @@ function EmeraldMoneyBarFill() {
       <div className="flex flex-row items-center justify-center">
         <Image src="/image/gemstone.svg" width={24} height={24} alt="gems" />
         <div className="ml-2 w-48 h-2 bg-white rounded-full">
-          <div className={`h-2 bg-emerald-800 rounded w-4/12`}></div>
+          <div style={{width: `${width}%`}} className={`h-2 bg-emerald-800 rounded`}></div>
         </div>
       </div>
     </button>

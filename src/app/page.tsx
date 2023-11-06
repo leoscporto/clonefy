@@ -2,7 +2,7 @@
 import DashboardItems from "./DashboardItems";
 import DashboardHeader from "./DashboardHeader";
 import { ProductsRevenueDetails } from "@data/productRevenue";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { DailyValue, calculateDailyValues } from "@data/dailyValue";
 import { generateTransactions } from "@data/transaction";
 import { faker } from "@faker-js/faker";
@@ -16,21 +16,14 @@ import { sleep } from "@utils/await";
 
 import PocketBase from "pocketbase";
 import { databaseIP } from "@data/database";
+import GlobalProviderContext from "../Context/GlobalContext";
 
 const pb = new PocketBase(databaseIP);
 
 export default function Dashboard() {
-  const [productRevenue, setProductRevenue] = useState<ProductsRevenueDetails>({
-    aprovacaoPorcentagem: 0,
-    reembolsoPorcentagem: 0,
-    chargebackPorcentagem: 0,
-    valorLiquido: 0,
-    numVendas: 0,
-    vendasClickCloneFy: 0,
-    conversaoBoletoPorcentagem: 0,
-    numBoletosGerados: 0,
-    vendasClickCloneFyPorcentagem: 0,
-  });
+  const { productRevenue, setProductRevenue } = useContext(
+    GlobalProviderContext
+  );
   const [dailyValues, setDailyValues] = useState<DailyValue[]>([]);
 
   const [dateInterval, setDateInterval] = useState<[Date, Date | null]>([
@@ -71,22 +64,17 @@ export default function Dashboard() {
 
     try {
       const startDate = formatDate2(start, false);
-      const endDate = formatDate2(
-        end ?? start,
-        false
-      );
+      const endDate = formatDate2(end ?? start, false);
 
-      console.log(startDate,endDate);
-      
+      console.log(startDate, endDate);
+
       record = await pb
         .collection("vendasTotaisCloneFy")
-        .getFirstListItem(
-          `start="${startDate}" && end="${endDate}"`
-        );
+        .getFirstListItem(`start="${startDate}" && end="${endDate}"`);
     } catch (e) {
       console.log(e);
     }
-    
+
     if (record) {
       numVendas = record.vendas;
     } else {
@@ -98,7 +86,7 @@ export default function Dashboard() {
               max: 321 * numDaysBetween,
             });
     }
-    
+
     const productRevenueDetails: ProductsRevenueDetails = {
       aprovacaoPorcentagem: 0,
       reembolsoPorcentagem: 0,
@@ -116,8 +104,8 @@ export default function Dashboard() {
       numVendas,
       start,
       end
-    );    
-      
+    );
+
     const [total, dailyV] = await calculateDailyValues(
       product,
       randomTransactions,
@@ -161,7 +149,7 @@ export default function Dashboard() {
     await sleep(1);
 
     setLoading(false);
-    setDailyValues(dailyV);
+    setDailyValues(dailyV);    
     setProductRevenue(productRevenueDetails);
   };
 

@@ -1,5 +1,6 @@
 import NavBar from "@components/NavBar/NavBar";
 import "@styles/globals.css";
+import GlobalProvider from "../Providers/GlobalProvider";
 
 export const metadata = {
   title: "Clonefy",
@@ -15,10 +16,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={'font-body'}>
-      <body>
-        <NavBar>{children}</NavBar>
-      </body>
-    </html>
+    <GlobalProvider>
+      <html lang="en" className={"font-body"}>
+        <body>
+          <NavBar>{children}</NavBar>
+        </body>
+      </html>
+    </GlobalProvider>
   );
 }
