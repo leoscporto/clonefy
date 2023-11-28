@@ -21,10 +21,6 @@
       vendasClickCloneFyPorcentagem: 0,
     });
 
-    useEffect(() => {
-      console.log("teste");
-    }, [])
-
     return (
       <GlobalProviderContext.Provider
         value={{ productRevenue, setProductRevenue }}

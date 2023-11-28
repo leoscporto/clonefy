@@ -34,3 +34,30 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+Projeto kiwify
+
+Vamos trabalhar com 3 abas: dashboard, vendas, ajuda
+
+### Dashboard
+calendario: precisa fazer a soma de valores em períodos da maneira correta
+
+### Vendas
+- o cálculo do valor das vendas de cada dia deve ser calculado assim: Cada venda = 98,7 reais 
+Logo, 100 vendas = 9870
+150 vendas = 14850
+E por aí vai
+
+- na aba vendas, o valor que aparece em "valor liquido" e o total de todas as vendas, desde a primeira até hoje, logo, essa é a soma total do periodo do calendário, como se eu tivesse escolhido o parâmetro "tempo todo" como período (existem o hoje, últimos 7 dias, últimos 30 dias e tempo todo)
+
+### Ajuda
+- na aba ajuda, eu consigo mudar a quantidade de vendas de um determinado dia, assim, modificando as vendas. Esses resultados ficam salvos em um banco de dados, então, se entre o dia 01 e dia 30 tinha 1000 vendas, após eu alterar a quantidade, a soma que o calendário faz dentro desse período também muda
+- Logo, na aba ajuda, eu vou alterar apenas a quantidade de vendas de um determinado dia(s) e assim, a quantidade vendida se altera proporcionalmente
+
+### Geral
+
+- na barra superior direita fica uma barra de progresso com uma insígnia, que é o arredondamento do total de vendas, desde a data da primeira até a data de hoje (ajuda que não temos o valor de amanhã, pois o amanhã ainda não existe)
+
+•a barra de progresso no canto superior direito se altera sempre que completa, zerado o progresso pro nível seguinte e alterando a insígnia que fica do lado
+
+•todo dia as 00:00 o dia atual e criado com um Random de vendas, de 100 a 150 por exemplo e automaticamente salvo no banco de dados. Assim, eu não preciso criar a quantidade de vendas de cada dia, porque muitos vão ser criados automaticamente, mas se eu quiser alterar na aba "ajuda" eu posso

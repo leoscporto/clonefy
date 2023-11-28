@@ -39,8 +39,7 @@ const ProductSellingGraph = ({
   const [values, setValues] = useState<number[]>([]);
   const [dataset, setDataset] = useState<GraphDetails[]>([]);
   const [categories, setCategories] = useState<Date[]>([]);
-  const [showModal, setShowModal] = useState(false);
-
+  
   useEffect(() => {
     const dates = extractDate(dailyValues);
     const [v, d] = extractValues(dailyValues, dates);

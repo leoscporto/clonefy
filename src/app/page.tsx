@@ -66,8 +66,6 @@ export default function Dashboard() {
       const startDate = formatDate2(start, false);
       const endDate = formatDate2(end ?? start, false);
 
-      console.log(startDate, endDate);
-
       record = await pb
         .collection("vendasTotaisCloneFy")
         .getFirstListItem(`start="${startDate}" && end="${endDate}"`);

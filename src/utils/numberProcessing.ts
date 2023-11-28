@@ -26,3 +26,39 @@ export function parseCommaDecimalNumber(num: number): string {
       return simplificado + " K";
     }
   }
+
+  export function formatNumber(valor: number, formatar: boolean =  true): string {
+		if (valor < 1000) {
+			return valor.toString();
+		} else {
+			const magnitude = Math.pow(10, Math.floor(Math.log10(valor)));
+			
+			if (valor < 1_000_000) {
+				const multiplicador = Math.ceil(valor / magnitude);
+				const valorFormatado = multiplicador * magnitude;
+				
+				if (!formatar) {
+					return valorFormatado.toString();
+				}
+				
+				if (valorFormatado >= 1000) {
+					return (valorFormatado / 1000).toString() + "k";
+				} else {
+					return valorFormatado.toString();
+				}
+			} else {
+				const multiplicador = Math.ceil(valor / 1_000_000);
+				const valorFormatado = multiplicador * 1_000_000;
+				
+				if (!formatar) {
+					return valorFormatado.toString();
+				}
+				
+				if (valorFormatado >= 1_000_000) {
+					return (valorFormatado / 1_000_000).toString() + "M";
+				} else {
+					return valorFormatado.toString();
+				}
+			}
+		}
+  }

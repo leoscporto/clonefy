@@ -110,10 +110,15 @@ export async function calculateDailyValues(
     totalValue += valueOnDate;
 
     // Move to the next day or increment hours if it's the same day
-    currentDate.setHours(currentDate.getHours() + 1);
-    if (currentDate.getHours() == 23) {
-      currentDate.setMinutes(59);
+    if (sameDay) {
+      currentDate.setHours(currentDate.getHours() + 1);
+      if (currentDate.getHours() == 23) {
+        currentDate.setMinutes(59)
+      }
+    } else {
+      currentDate.setDate(currentDate.getDate() + 1);
     }
+
   }
 
   return [totalValue, dailyValues];

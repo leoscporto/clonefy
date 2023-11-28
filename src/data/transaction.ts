@@ -1,5 +1,5 @@
 import { faker } from '@faker-js/faker';
-import { getEndOfDay, getStartOfDay, isSameDay } from '@utils/dateProcessing';
+import { getStartOfDay, isSameDay } from '@utils/dateProcessing';
 
 const products = [1, 2, 3, 4, 5];
 
