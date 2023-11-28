@@ -42,13 +42,6 @@ Vamos trabalhar com 3 abas: dashboard, vendas, ajuda
 ### Dashboard
 calendario: precisa fazer a soma de valores em períodos da maneira correta
 
-### Vendas
-- o cálculo do valor das vendas de cada dia deve ser calculado assim: Cada venda = 98,7 reais 
-Logo, 100 vendas = 9870
-150 vendas = 14850
-E por aí vai
-
-- na aba vendas, o valor que aparece em "valor liquido" e o total de todas as vendas, desde a primeira até hoje, logo, essa é a soma total do periodo do calendário, como se eu tivesse escolhido o parâmetro "tempo todo" como período (existem o hoje, últimos 7 dias, últimos 30 dias e tempo todo)
 
 ### Ajuda
 - na aba ajuda, eu consigo mudar a quantidade de vendas de um determinado dia, assim, modificando as vendas. Esses resultados ficam salvos em um banco de dados, então, se entre o dia 01 e dia 30 tinha 1000 vendas, após eu alterar a quantidade, a soma que o calendário faz dentro desse período também muda

@@ -92,6 +92,7 @@ export default function ModalUpdateValues() {
         <DatePicker
           className="border"
           showTimeSelect
+					dateFormat={"dd/MM/yyyy"}
           selected={startDate}
           onChange={(date: Date) => setStartDate(date)}
           required
