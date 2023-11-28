@@ -45,11 +45,12 @@ function EmeraldMoneyBarFill() {
 			.collection("vendasTotaisCloneFy")
 			.getList();
 			
-			const sellCalc = records.items.reduce(
+			let sellCalc = records.items.reduce(
 				(accumulator, currentValue) => accumulator + currentValue.vendas,
 				0,
 			);
 			
+			sellCalc = sellCalc * 98.7
 			const formattedNumberString = formatNumber(sellCalc, false);
 			const formattedNumberNumber = parseInt(formattedNumberString, 10);
 			

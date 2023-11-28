@@ -4,12 +4,17 @@ import LearnMoreAbout from "@components/LearnMoreAbout/LearnMoreAbout";
 import { Venda, generateRandomVendas } from "@data/vendas";
 import { faker } from "@faker-js/faker";
 import {
-  parseCommaDecimalNumber,
-  parseCommaDecimalNumber2,
+	formatNumber,
+	parseCommaDecimalNumber,
+	parseCommaDecimalNumber2,
 } from "@utils/numberProcessing";
 import { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { HiAdjustments, HiDocumentDownload } from "react-icons/hi";
+import PocketBase from "pocketbase";
+import {databaseIP} from "@data/database";
+
+const pb = new PocketBase(databaseIP);
 
 interface VendaSummary {
   vendasEncontradas: number;
@@ -22,17 +27,37 @@ export default function Vendas() {
     valorLiquido: 0,
   });
   const [vendas, setVendas] = useState<Venda[]>([]);
+	
+	const getRecords = async () => {
+		try {
+			const records = await pb
+			.collection("vendasTotaisCloneFy")
+			.getList();
+			
+			const sellCalc = records.items.reduce(
+				(accumulator, currentValue) => accumulator + currentValue.vendas,
+				0,
+			);
+			
+			setVendaSummary({
+				vendasEncontradas: sellCalc,
+				valorLiquido: sellCalc * 98.7
+			})
+			
+		} catch (e) {
+			console.log(e);
+		}
+	}
+	
+	useEffect(() => {
+		getRecords()
+	}, []);
 
   useEffect(() => {
-    faker.seed(1381231273);
-    const [valorLiquido, currentVendas] = generateRandomVendas();
+    faker.seed(vendaSummary.vendasEncontradas);
+    const [, currentVendas] = generateRandomVendas();
     setVendas(currentVendas);
-
-    setVendaSummary({
-      vendasEncontradas: currentVendas.length,
-      valorLiquido: valorLiquido,
-    });
-  }, []);
+  }, [vendaSummary.valorLiquido, vendaSummary.vendasEncontradas]);
 
   return (
     <div className="container mx-auto sm:px-6 md:px-16 py-10 lg:py-12 relative w-full 2xl:w-9/12 flex flex-col gap-3 animate-fadein">
