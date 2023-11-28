@@ -65,6 +65,12 @@ function EmeraldMoneyBarFill() {
 		getRecords()
 	}, []);
 	
+	useEffect(() => {
+		(async () => {
+			await pb.collection("vendasTotaisCloneFy").subscribe("*", () => getRecords());
+		})()
+	}, []);
+	
 	return (
 		<button className="flex flex-col justify-center transition-colors duration-150 hover:bg-emerald-600 p-2 rounded">
 			<h1 className="text-white text-sm font-bold leading-none w-full text-right">
