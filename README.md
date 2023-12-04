@@ -43,14 +43,9 @@ Vamos trabalhar com 3 abas: dashboard, vendas, ajuda
 calendario: precisa fazer a soma de valores em períodos da maneira correta
 
 
-### Ajuda
-- na aba ajuda, eu consigo mudar a quantidade de vendas de um determinado dia, assim, modificando as vendas. Esses resultados ficam salvos em um banco de dados, então, se entre o dia 01 e dia 30 tinha 1000 vendas, após eu alterar a quantidade, a soma que o calendário faz dentro desse período também muda
-- Logo, na aba ajuda, eu vou alterar apenas a quantidade de vendas de um determinado dia(s) e assim, a quantidade vendida se altera proporcionalmente
-
 ### Geral
+- Pequenas melhorias de layout
 
-- na barra superior direita fica uma barra de progresso com uma insígnia, que é o arredondamento do total de vendas, desde a data da primeira até a data de hoje (ajuda que não temos o valor de amanhã, pois o amanhã ainda não existe)
+- a barra de progresso no canto superior direito se altera sempre que completa, zerado o progresso pro nível seguinte e alterando a insígnia que fica do lado
 
-•a barra de progresso no canto superior direito se altera sempre que completa, zerado o progresso pro nível seguinte e alterando a insígnia que fica do lado
-
-•todo dia as 00:00 o dia atual e criado com um Random de vendas, de 100 a 150 por exemplo e automaticamente salvo no banco de dados. Assim, eu não preciso criar a quantidade de vendas de cada dia, porque muitos vão ser criados automaticamente, mas se eu quiser alterar na aba "ajuda" eu posso
+- todo dia as 00:00 o dia atual e criado com um Random de vendas, de 100 a 150 por exemplo e automaticamente salvo no banco de dados. Assim, eu não preciso criar a quantidade de vendas de cada dia, porque muitos vão ser criados automaticamente, mas se eu quiser alterar na aba "ajuda" eu posso

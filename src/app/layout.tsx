@@ -1,6 +1,7 @@
 import NavBar from "@components/NavBar/NavBar";
 import "@styles/globals.css";
 import GlobalProvider from "../Providers/GlobalProvider";
+import React from "react";
 
 export const metadata = {
   title: "Clonefy",
