@@ -185,21 +185,24 @@ function InformationCard({
   icon,
   lateralIcon,
   className,
-}: InformationCardProps) {
+}: Readonly<InformationCardProps>) {
   return (
     <div
-      className={`bg-white px-5 py-5 rounded-lg drop-shadow h-22 flex items-center ${className}`}
+			style={{
+				fontFamily: "-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,\"Helvetica Neue\",Arial,sans-serif"
+			}}
+      className={`bg-white px-5 py-5 rounded-lg shadow h-22 flex items-center ${className}`}
     >
-      <div className="flex flex-row items-center gap-4">
+      <div className="flex flex-row items-center gap-5">
         {icon}
         <div>
           <div className="flex items-center gap-2">
             <h2 className="text-sm text-gray-500">{title}</h2>
             {lateralIcon}
           </div>
-          <div className="flex items-center gap-4">
-            <p className="text-gray-900 font-[450]">{information}</p>
-            <p className="text-gray-500">{additionalText}</p>
+          <div className="flex items-center">
+            <p style={{color: "#1a202e", fontSize: "1.125rem"}} className="text-lg leading-7 font-medium text-cool-gray-900">{information}</p>
+            <p style={{color: "#64748b"}} className="text-sm text-cool-gray-500 ml-4">{additionalText}</p>
           </div>
         </div>
       </div>

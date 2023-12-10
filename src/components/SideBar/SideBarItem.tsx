@@ -12,7 +12,7 @@ export default function SideBarItem(props: SideBarItemProps) {
   return (
     <Link href={props.goto}>
       <button
-        className={`rounded-lg p-2 gap-3 flex flex-row items-center justify-start hover:scale-105 transition duration-300 ease-in-out w-full text-start text-sm font-[500] ${
+        className={`font-medium cursor-pointer rounded-md text-gray-200 leading-5 p-2 gap-3 flex flex-row items-center justify-start hover:scale-105 transition duration-300 ease-in-out w-full text-start text-sm ${
           pathname === props.goto ? "bg-gray-900 text-white" : "hover:bg-gray-700 text-gray-200"
         }`}
       >

@@ -18,7 +18,7 @@ export default function RootLayout({
 }) {
   return (
     <GlobalProvider>
-      <html lang="en" className={"font-body"}>
+      <html lang="en" className="relative min-h-screen">
         <body>
           <NavBar>{children}</NavBar>
         </body>

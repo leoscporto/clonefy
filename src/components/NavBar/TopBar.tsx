@@ -49,7 +49,8 @@ function EmeraldMoneyBarFill() {
 	}, []);
 	
 	return (
-		<button className="level w-56 md:w-64 h-12 p-1 inline-flex flex-col justify-end items-center rounded-md focus:outline-none px-2  cursor-pointer transition duration-200 hover:bg-green-500 bg-green-600">
+		<button
+			className="level w-56 md:w-64 h-12 p-1 inline-flex flex-col justify-end items-center rounded-md focus:outline-none px-2  cursor-pointer transition duration-200 hover:bg-green-500/30">
 			<h1 className="text-white text-sm font-bold leading-none w-full text-right">
 				{`R$ ${simplifyNumber(sells)} / R$ ${maxValue}`}
 			</h1>
@@ -83,7 +84,7 @@ export default function TopBar({ onClick }: TopBarProps) {
 			</button>
 			<div className="flex items-center justify-end w-full m">
 				<EmeraldMoneyBarFill/>
-				<div className="flex items-center md:mr-6">
+				<div className="flex items-center">
 					<ProfileButton/>
 				</div>
 			</div>

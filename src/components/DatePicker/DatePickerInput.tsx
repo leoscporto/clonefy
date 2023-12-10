@@ -15,7 +15,7 @@ const DatePickerInput = React.forwardRef<
     <button
       ref={ref}
       onClick={onClick}
-      className="flex flex-row justify-between py-2 px-4 lg:w-72 w-full text-sm bg-white items-center rounded-lg border border-gray-300 focus:ring ring-blue-100 transition-all duration-150"
+      className="flex flex-row justify-between py-2 px-5 lg:w-72 w-full text-sm bg-white items-center rounded-lg border border-gray-300 focus:ring ring-blue-100 transition-all duration-150"
     >
       <div className="flex flex-row items-center gap-1">
         {value ? processDateRange(value) : ""}

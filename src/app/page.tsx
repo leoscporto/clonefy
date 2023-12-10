@@ -191,7 +191,7 @@ export default function Dashboard() {
   }, []);
 
   return (
-    <div className="container mx-auto sm:px-6 md:px-20 py-10 lg:py-12 relative w-full 2xl:w-9/12 animate-fadein">
+    <div className="container mx-auto sm:px-6 md:px-10 py-10 lg:py-12 relative w-full 2xl:w-9/12 animate-fadein">
       <DashboardHeader
         dateInterval={dateInterval}
         isDataLoading={loading}
