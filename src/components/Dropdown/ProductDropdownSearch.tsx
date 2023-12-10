@@ -41,9 +41,9 @@ export default function ProductDropdownSearch({
 	};
 	
 	return (
-		<div className="flex flex-col" ref={ref}>
+		<div ref={ref}>
 			{isOpen && (
-				<div className="flex flex-col-reverse lg:flex-row gap-3">
+				<div className="fixed z-10 bg-white p-2 rounded shadow-lg border sm:w-80">
 					<input
 						value={inputText}
 						className={`border rounded ring-2 shadow-lg py-1 transition-all duration-150 ease-in-out ${
